@@ -448,7 +448,7 @@
                                 
                                                             <div class="tab"><button id="defaultOpenTab" class="tablinks active" onclick="openTabs(event,'tab_20')">Hoa quả</button><button class="tablinks " onclick="openTabs(event,'tab_21')">Thực phẩm khô</button><button class="tablinks " onclick="openTabs(event,'tab_19')">Rau hữu cơ</button></div>
                                 <div id="tab_20" class="tabcontent" style="display: block;"><div class="woocommerce columns-4 "><div class="grid-uniform md-mg-left-10 products columns-4">
-                                @foreach($foods as $food)
+                                @foreach($food1s as $food)
     <div class="md-pd-left10 grid__item large--one-quarter medium--one-third small--one-half">
         <div class="product-item">
             <div class="product-img">
@@ -478,7 +478,7 @@
         @endforeach
     </div>
     </div></div><div id="tab_21" class="tabcontent" style="display: none;"><div class="woocommerce columns-4 "><div class="grid-uniform md-mg-left-10 products columns-4">
-    @foreach($foods as $food)
+    @foreach($food2s as $food)
     <div class="md-pd-left10 grid__item large--one-quarter medium--one-third small--one-half">
         <div class="product-item">
             <div class="product-img">
@@ -504,19 +504,20 @@
     @endforeach
     </div>
     </div></div><div id="tab_19" class="tabcontent" style="display: none;"><div class="woocommerce columns-4 "><div class="grid-uniform md-mg-left-10 products columns-4">
+    @foreach($food3s as $food)
     <div class="md-pd-left10 grid__item large--one-quarter medium--one-third small--one-half">
         <div class="product-item">
             <div class="product-img">
                 <a href="https://at10.mediawz.com/san-pham/nho-xanh/">
-                   <img width="260" height="260" src="https://at10.mediawz.com/wp-content/uploads/2019/06/17_f6c9824688c548a0a2a1c953912bb97a_large-260x260.jpg" class="attachment-thumb_260x260 size-thumb_260x260 wp-post-image" alt="NHO XANH" srcset="https://at10.mediawz.com/wp-content/uploads/2019/06/17_f6c9824688c548a0a2a1c953912bb97a_large-260x260.jpg 260w, https://at10.mediawz.com/wp-content/uploads/2019/06/17_f6c9824688c548a0a2a1c953912bb97a_large-300x300.jpg 300w, https://at10.mediawz.com/wp-content/uploads/2019/06/17_f6c9824688c548a0a2a1c953912bb97a_large-100x100.jpg 100w, https://at10.mediawz.com/wp-content/uploads/2019/06/17_f6c9824688c548a0a2a1c953912bb97a_large-150x150.jpg 150w, https://at10.mediawz.com/wp-content/uploads/2019/06/17_f6c9824688c548a0a2a1c953912bb97a_large.jpg 480w" sizes="100vw">            </a>
+                   <img width="260" height="260" src="/images/{{$food->image}}" class="attachment-thumb_260x260 size-thumb_260x260 wp-post-image" alt="NHO XANH" srcset="/images/{{$food->image}}" sizes="100vw">            </a>
             </div>
             <div class="product-info">
                 <div class="product-title">
-                    <a href="https://at10.mediawz.com/san-pham/nho-xanh/">NHO XANH</a>
+                    <a href="https://at10.mediawz.com/san-pham/nho-xanh/">{{$food->name}}</a>
                 </div>
                             <div class="product-price clearfix">
-                                        <span class="current-price"><span class="woocommerce-Price-amount amount">12,000<span class="woocommerce-Price-currencySymbol">₫</span></span></span>
-                        <span class="original-price"><s><span class="woocommerce-Price-amount amount">15,000<span class="woocommerce-Price-currencySymbol">₫</span></span></s></span>
+                                        <span class="current-price"><span class="woocommerce-Price-amount amount">{{$food->promotion_price}}<span class="woocommerce-Price-currencySymbol">₫</span></span></span>
+                        <span class="original-price"><s><span class="woocommerce-Price-amount amount">{{$food->unit_price}}<span class="woocommerce-Price-currencySymbol">₫</span></span></s></span>
                                 </div>
                 <div class="product-actions text-center clearfix">
                     <a href="https://at10.mediawz.com/san-pham/nho-xanh/">
@@ -525,6 +526,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 
     </div>

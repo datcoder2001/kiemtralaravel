@@ -18,7 +18,10 @@ class FoodController extends Controller
         //
         $foods =DB::table('t_food')->select('*');
         $foods=$foods->get();
-        return view('home', compact('foods'));
+        $food1s=T_food::where('model','=','Hoa quả')->get();
+        $food2s=T_food::where('model','=','Thực phẩm khô')->get();
+        $food3s=T_food::where('model','=','Rau hữu cơ')->get();
+        return view('home', compact('foods','food1s','food2s','food3s'));
     }
 
     /**

@@ -32,6 +32,8 @@ class FoodController extends Controller
     public function create()
     {
         //
+        $foods=T_food::all();
+        return view('create',compact('foods'));
     }
 
     /**
@@ -42,24 +44,24 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Kiểm tra giá trị description, model, produced_on
         $this->validate($request, 
             [
                 //Kiểm tra giá trị rỗng
-                'name'=>'required',
+                'name' => 'required',
                 'model' => 'required',
-                'unit_price'=>'required',
-                'promotion_price'=>'required',
+                'unit_price'=> 'required',
+                'promotion_price'=> 'required',
                 'description' => 'required',
                 'image_file'=>'mimes:jpeg,jpg,png,gif|max:10000'
             ],
             [
                 //Tùy chỉnh hiển thị thông báo
-                'name.required'=>'Bạn chưa nhập nameek!',
-                'model.required' => 'Bạn chưa nhập model!',
+                'name.required' => 'Chưa nhập tên',
+                'model.required' => 'Chưa nhập loại',
+                'unit_price.required' => 'Chưa nhập giá tiền',
+                'promotion_price.required' => 'chưa nhập giá tiền khuyến mãi',
                 'description.required' => 'Bạn chưa nhập mô tả!',
-                'unit_price.required'=>'Bạn chưa nhập giá',
-                'promotion_price.required'=>'Bạn chưa nhập giá khuyến mãi',
                 'image_file.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
                 'image_file.max' => 'Hình thẻ giới hạn dung lượng không quá 10MB',
             ]        
@@ -81,7 +83,7 @@ class FoodController extends Controller
         $food->description=$request->input('description');
         $food->image=$name;
         $food->save();
-        return redirect('t_food')->with('success','Bạn đã thêm thành công');
+        return redirect('home')->with('success','Bạn đã thêm thành công');
     }
 
     /**

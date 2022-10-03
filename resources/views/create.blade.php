@@ -11,18 +11,28 @@
   </head>
   <body>
   <div class="container">
-    <h1 style="text-align:center;color:green">ADD NEW FOOD <i class="fas fa-goodreads    "></i></h1>
-    <form action="{{route('foods.store')}}" method="post" enctype="multipart/form-data">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <h1 style="text-align:center;color:red">ADD NEW</h1>
+    <form action="{{route('home.store')}}" method="post" enctype="multipart/form-data">
+        @csrf
     <div class="form-group">
-    <label for="">Name</label>
+    <label for="">Tên</label>
         <input type="text" name="name" id="" class="form-control">
-    <label for="">Model</label>
+        <label for="">Loại</label>
         <input type="text" name="model" id="" class="form-control">
-        <label for="">Unit_price</label>
+        <label for="">Giá tiền</label>
         <input type="number" name="unit_price" id="" class="form-control">
-        <label for="">Promotion_price</label>
+        <label for="">Giá khuyến mãi</label>
         <input type="number" name="promotion_price" id="" class="form-control">
-        <label for="">Description</label>
+        <label for="">Mô tả</label>
         <input type="text" name="description" id="" class="form-control">
         <label for="">Image</label>
         <input type="file" class="form-control-file" id="" name="image_file" placeholder="" onchange="changeImage(event)">
@@ -34,7 +44,6 @@
                     img.src=URL.createObjectURL(file);
                 }
             </script> 
-              
             </div>
         <input name="btnSave" id="" class="btn btn-primary" type="submit" value="Lưu">
     </div>
@@ -47,5 +56,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>

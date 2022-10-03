@@ -20,5 +20,4 @@ Route::get('/', function () {
 Route::resource('home',FoodController::class);
 route::get('/detail/{id}',[FoodController::class, 'show']);
 route::get('/detail/{id}/edit',[FoodController::class, 'show']);
-Route::get('add',[FoodController::class, 'store']);
 
